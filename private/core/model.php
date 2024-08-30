@@ -10,9 +10,9 @@ class Model extends Database
 
     // Protected properties for the table name and function hooks
     protected $table = null; // Table name, initialized as null
-    protected $afterSelect = null; // Array to store functions to run after SELECT queries
-    protected $allowedColumns = null; // Array to store allowed columns for inserts/updates
-    protected $beforeInsert = null; // Array to store functions to run before INSERT queries
+    protected $afterSelect = []; // Array to store functions to run after SELECT queries
+    protected $allowedColumns = []; // Array to store allowed columns for inserts/updates
+    protected $beforeInsert = []; // Array to store functions to run before INSERT queries
 
     // Constructor: Set the table name if not already set
     public function __construct()
@@ -48,6 +48,7 @@ class Model extends Database
                 }
             }
         }
+
 
         return $data;
     }

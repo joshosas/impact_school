@@ -9,7 +9,7 @@ class Login extends Controller
     function index()
     {
         // code...
-        $errors = array();
+        $errors = [];
 
         if (count($_POST) > 0) {
 
