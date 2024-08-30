@@ -13,7 +13,7 @@
 </style>
 <nav class="navbar navbar-expand-lg navbar-light bg-light p-2">
     <a class="navbar-brand" href="#">
-        <img src="<?= ASSETS ?>/images/school_logo.png" style="width: 50px;" alt="School Logo">
+        <img src="<?= ROOT ?>/assets/images/school_logo.png" style="width: 50px;" alt="School Logo">
         Impact School
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +25,13 @@
                 <a class="nav-link active" href="<?= ROOT ?>">DASHBOARD</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= ROOT ?>/users">USERS</a>
+                <a class="nav-link" href="<?= ROOT ?>/schools">SCHOOLS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= ROOT ?>/staff">STAFF</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= ROOT ?>/students">STUDENTS</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?= ROOT ?>/classes">CLASSES</a>
@@ -38,7 +44,7 @@
         <ul class="navbar-nav ms-auto">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    USER
+                    <?= Auth::getFirstname() ?>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                     <a class="mb-2 dropdown-item" href="<?= ROOT ?>/profile">Profile</a>
