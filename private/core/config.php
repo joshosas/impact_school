@@ -1,8 +1,8 @@
 
 <?php
 
-define('ROOT', 'http://localhost/impactschool/public');
-define('ASSETS', 'http://localhost/impactschool/public/assets');
+define('ROOT', 'http://localhost/impact_school/public');
+define('ASSETS', 'http://localhost/impact_school/public/assets');
 
 define('DB_NAME', 'impact_school');
 define('DB_HOST', 'localhost');

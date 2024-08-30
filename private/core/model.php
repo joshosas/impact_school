@@ -115,19 +115,31 @@ class Model extends Database
      */
     public function update($id, $data)
     {
-        // Build the SET part of the SQL query dynamically
-        $keys = array_keys($data); // Get column names from data array
-        $setString = implode(' = ?, ', $keys) . ' = ?'; // Create the SET part: col1 = ?, col2 = ?, ...
+        // Initialize the SQL query string for the SET clause
+        $setQuery = "";
 
-        // Prepare the SQL query for update
-        $query = "UPDATE $this->table SET $setString WHERE id = ?";
+        // Get an array of the column names (keys) from the provided data array
+        $keys = array_keys($data);
 
-        // Add the ID to the data array to use in the WHERE clause
-        $data[] = $id;
+        // Loop through each key to construct the SET part of the SQL query dynamically
+        foreach ($keys as $key) {
+            // Append column name and placeholder to the SET string, e.g., "column_name = :column_name"
+            $setQuery .= $key . " = :" . $key . ", ";
+        }
 
-        // Execute the query with data values
-        return $this->query($query, array_values($data)); // Ensure data values are passed as an array
+        // Remove the trailing comma and space from the SET string
+        $setQuery = rtrim($setQuery, ", ");
+
+        // Construct the full SQL update query with the dynamically created SET clause and a WHERE clause for the ID
+        $query = "UPDATE $this->table SET $setQuery WHERE id = :id";
+
+        // Add the ID to the data array to bind it to the :id placeholder in the SQL query
+        $data['id'] = $id;
+
+        // Execute the SQL query using the query method, passing in the query string and data array for binding
+        return $this->query($query, $data);
     }
+
 
     /**
      * Delete a record from the table
