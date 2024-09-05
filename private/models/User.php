@@ -82,23 +82,39 @@ class User extends Model
         return false;
     }
 
+
+    /**
+     * Generate a unique user ID before inserting a new user
+     * @param array $data - The user data to be inserted
+     * @return array - Modified data with the generated user_id
+     */
     public function make_user_id($data)
     {
-        $data['user_id'] = random_string(60);
+        $data['user_id'] = random_string(60); // Generates a random string of 60 characters
         return $data;
     }
 
+    /**
+     * Assign the school ID to the user before inserting
+     * @param array $data - The user data to be inserted
+     * @return array - Modified data with the school_id from the session
+     */
     public function make_school_id($data)
     {
         if (isset($_SESSION['USER']->school_id)) {
-            $data['school_id'] = $_SESSION['USER']->school_id;
+            $data['school_id'] = $_SESSION['USER']->school_id; // Retrieve the school ID from the session
         }
         return $data;
     }
 
+    /**
+     * Hash the user's password before inserting into the database
+     * @param array $data - The user data to be inserted
+     * @return array - Modified data with the hashed password
+     */
     public function hash_password($data)
     {
-        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT); // Hash the password using bcrypt
         return $data;
     }
 }

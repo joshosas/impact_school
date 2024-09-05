@@ -14,10 +14,10 @@
             <?php foreach ($rows as $row): ?>
 
                 <div class="card m-2 shadow-sm" style="max-width: 14rem;min-width: 14rem;">
-                    <img src="<?= ROOT ?>/assets/images/woman.png" class="card-img-top " alt="Card image cap">
+                    <img src="<?= ROOT ?>/assets/images/man.png" class="card-img-top " alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title"><?= $row->firstname ?> <?= $row->lastname ?></h5>
-                        <p class="card-text"><?= str_replace("_", " ", $row->rank) ?></p>
+                        <p class="card-text"><?= ucfirst(str_replace("_", " ", $row->rank)) ?></p>
                         <a href="#" class="btn btn-primary">Profile</a>
                     </div>
                 </div>

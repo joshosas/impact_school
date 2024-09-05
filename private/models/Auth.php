@@ -56,7 +56,7 @@ class Auth
             $user = new User();
             $school = new School();
 
-            if ($row = $school->where('id', $id)) {
+            if ($row = $school->findOne('id', $id)) {
                 $row = $row[0];
                 $arr['school_id'] = $row->school_id;
 

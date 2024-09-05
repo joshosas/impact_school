@@ -20,4 +20,9 @@
 </head>
 
 <body>
+    <style>
+        .fa {
+            margin-right: 4px;
+        }
+    </style>
     <div style="min-width:350px;">
