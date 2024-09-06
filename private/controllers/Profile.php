@@ -6,9 +6,21 @@
 class Profile extends Controller
 {
 
-    function index()
+    function index($id = '')
     {
         // code...
-        $this->view('auth/profile');
+        $user = new User();
+        $row = $user->first('user_id', $id);
+
+        $crumbs[] = ['Dashboard', '']; // Breadcrumb navigation
+        $crumbs[] = ['Staff', 'users'];
+        if ($row) {
+            $crumbs[] = [$row->firstname, 'profile'];
+        }
+
+        $this->view('auth/profile', [
+            'row' => $row,
+            'crumbs' => $crumbs
+        ]);
     }
 }

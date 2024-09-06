@@ -52,6 +52,31 @@ class Model extends Database
 
         return $data;
     }
+    public function first($column, $value)
+    {
+        // Escape the column name to prevent SQL injection
+        $column = addslashes($column);
+
+        // Prepare the SQL query to fetch the row where the column matches the value
+        $query = "SELECT * FROM $this->table WHERE $column = :value";
+        $data = $this->query($query, [
+            'value' => $value // Bind the value parameter
+        ]);
+
+        // Run any 'afterSelect' functions if they exist
+        if (is_array($data)) {
+            if (property_exists($this, 'afterSelect')) {
+                foreach ($this->afterSelect as $func) {
+                    $data = $this->$func($data); // Call the functions on the retrieved data
+                }
+            }
+        }
+        if (is_array($data)) {
+            $data = $data[0];
+        }
+
+        return $data;
+    }
 
     /**
      * Fetch all records from the table

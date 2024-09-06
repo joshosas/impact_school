@@ -1,5 +1,6 @@
 <?php
 
+
 function get_var($key, $default = "")
 {
 
@@ -51,4 +52,16 @@ function show($data)
     echo "<pre>";
     print_r($data);
     echo "</pre>";
+}
+
+function get_image($image, $gender = 'male')
+{
+    if (!file_exists($image,)) {
+        if ($gender == 'male') {
+            $image = ROOT . "/assets/images/man.png";
+        } else {
+            $image = ROOT . "/assets/images/woman.png";
+        }
+    }
+    return $image;
 }
