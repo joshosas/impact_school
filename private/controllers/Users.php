@@ -14,6 +14,7 @@ class Users extends Controller
 
         $user = new User();
         $school_id = Auth::getSchool_id(); // Get the current user's school ID
+        // $data = $user->query("SELECT * FROM users WHERE school_id = :school_id && rank != super_admin", ['school_id' => $school_id]);
         $data = $user->query("SELECT * FROM users WHERE school_id = :school_id", ['school_id' => $school_id]);
 
         // Render the view, passing the list of users as 'rows' data

@@ -3,7 +3,7 @@
 <div class="container-fluid">
     <form method="post">
         <div class="p-4 mx-auto mr-4 shadow rounded" style="margin-top: 50px;width:100%;max-width: 340px;">
-            <h2 class="mb-3 text-center">Impact School</h2>
+            <h2 class="mb-3 text-center"><?= Auth::getSchool_name() ?></h2>
             <img src="<?= ROOT ?>/assets/images/school_logo.png" class="d-block mx-auto rounded-circle" style="width:100px;">
             <h3>Login</h3>
 

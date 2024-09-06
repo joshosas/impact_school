@@ -27,7 +27,7 @@ class Signup extends Controller
                 $user->insert($_POST);
 
                 // Redirect to the login page after successful signup
-                $this->redirect('login');
+                $this->redirect('users');
             } else {
                 // If validation fails, capture the errors
                 $errors = $user->errors;

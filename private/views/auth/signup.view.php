@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <form method="POST">
         <div class="p-4 my-5 mx-auto shadow rounded" style="margin-top:0px; width:100%;max-width:30%;">
-            <h2 class="mb-3 text-center">Impact School</h2>
+            <h2 class="mb-3 text-center"><?= Auth::getSchool_name() ?></h2>
             <img src="<?= ROOT ?>/assets/images/school_logo.png" class="border border-primary d-block mx-auto rounded-circle" style="width:100px;">
             <h3>Add User</h3>
 

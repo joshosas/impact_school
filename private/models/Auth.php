@@ -32,12 +32,16 @@ class Auth
 
     public static function user()
     {
+        // Check if the 'USER' session is set
         if (isset($_SESSION['USER'])) {
+            // Return the 'firstname' property from the 'USER' session object
             return $_SESSION['USER']->firstname;
         }
 
+        // Return false if the 'USER' session is not set
         return false;
     }
+
 
     public static function __callStatic($method, $params)
     {
