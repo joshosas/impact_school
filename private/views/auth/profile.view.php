@@ -4,6 +4,7 @@
 <div class="container-fluid p-4 shadow mx-auto" style="max-width: 1000px;">
     <?php $this->view('includes/crumbs', ['crumbs' => $crumbs]) ?>
 
+
     <?php if ($row): ?>
         <div class="row">
             <?php
@@ -17,11 +18,11 @@
                 <table class="table table-hover table-striped table-bordered">
                     <tr>
                         <th>First Name:</th>
-                        <td><?= esc($row->firstname) ?></td>
+                        <td><?= esc(ucwords($row->firstname)) ?></td>
                     </tr>
                     <tr>
                         <th>Last Name:</th>
-                        <td><?= esc($row->lastname) ?></td>
+                        <td><?= esc(ucwords($row->lastname)) ?></td>
                     </tr>
                     <tr>
                         <th>Email:</th>

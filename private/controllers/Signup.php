@@ -10,6 +10,7 @@ class Signup extends Controller
     {
         // Initialize an empty array to hold any validation errors
         $errors = [];
+        $mode = isset($_GET['mode']) ? $_GET['mode'] : '';
 
         // Check if form data has been submitted (i.e., if there are POST values)
         if (count($_POST) > 0) {
@@ -26,8 +27,8 @@ class Signup extends Controller
                 // Insert the validated data into the database
                 $user->insert($_POST);
 
-                // Redirect to the login page after successful signup
-                $this->redirect('users');
+                // Redirect to the login students or staff page after successful signup
+                $mode == 'students' ? $this->redirect('students') : $this->redirect('users');
             } else {
                 // If validation fails, capture the errors
                 $errors = $user->errors;
@@ -37,6 +38,7 @@ class Signup extends Controller
         // Render the signup view and pass any validation errors to the view
         $this->view('auth/signup', [
             'errors' => $errors,
+            'mode' => $mode
         ]);
     }
 }

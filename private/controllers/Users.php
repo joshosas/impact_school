@@ -15,7 +15,7 @@ class Users extends Controller
         $user = new User();
         $school_id = Auth::getSchool_id(); // Get the current user's school ID
         // $data = $user->query("SELECT * FROM users WHERE school_id = :school_id && rank != super_admin", ['school_id' => $school_id]);
-        $data = $user->query("SELECT * FROM users WHERE school_id = :school_id", ['school_id' => $school_id]);
+        $data = $user->query("SELECT * FROM users WHERE school_id = :school_id && rank not in ('student')", ['school_id' => $school_id]);
 
         $crumbs[] = ['Dashboard', '']; // Breadcrumb navigation
         $crumbs[] = ['Staff', 'users'];
@@ -23,7 +23,8 @@ class Users extends Controller
         // Render the view, passing the list of users as 'rows' data
         $this->view('auth/users', [
             'rows' => $data,
-            'crumbs' => $crumbs
+            'crumbs' => $crumbs,
+
         ]);
     }
 }
